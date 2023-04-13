@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct UserAppApp: App {
+    
+    @StateObject var users = UsersViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-           // UserView()
+            ContentView().environmentObject(users)
+           
         }
     }
 }

@@ -11,25 +11,23 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var users = [User(name: "David", email: "@@@", image: "image"),
-                 User(name: "Johan", email: "@@@", image: "image"),
-                 User(name: "Anna", email: "@@@", image: "image")]
+   @StateObject var users = UsersViewModel()
     
     var body: some View {
         NavigationView {
             VStack {
                 List() {
-                    ForEach(users) { user in
-                        NavigationLink(destination: UserView()){
+                    ForEach(users.listOfUsers) { user in
+                        NavigationLink(destination: UserView(user: user, users: users)){
                             RowView(user: user)
                         }
                     }
                 }
             }
             .navigationTitle("Users")
-            .navigationBarItems(trailing: NavigationLink(destination: UserView()){
-                Image(systemName: "plus.circle")
-            })
+            .navigationBarItems(trailing: NavigationLink(destination: UserView( users: users)){
+              Image(systemName: "plus.circle")
+           })
         }
     }
 }
@@ -44,11 +42,18 @@ struct RowView: View {
     let user : User
     
     var body: some View {
-        HStack {
+        VStack(alignment: .leading){
             Image(user.image)
+                .resizable()
+                .frame(width: 50, height: 50)
+                .cornerRadius(100)
+                .aspectRatio(contentMode: .fill)
             Text(user.name)
-            Spacer()
-            Text(user.email.prefix(5)+"...")
+                .font(.headline.bold())
+            Text(user.email)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
         }
+        
     }
 }
