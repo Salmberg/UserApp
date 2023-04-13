@@ -7,20 +7,37 @@
 
 import SwiftUI
 
+var users = [User(name: "David", email: "@@@", image: "image"),
+             User(name: "Johan", email: "@@@", image: "image"),
+             User(name: "Anna", email: "@@@", image: "image")]
+
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            List() {
+                ForEach(users) { user in
+                    RowView(user: user)
+                }
+            }
         }
-        .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct RowView: View {
+    let user : User
+    
+    var body: some View {
+        HStack {
+            Image(user.image)
+            Text(user.name)
+            Spacer()
+            Text(user.email.prefix(5)+"...")
+        }
     }
 }
