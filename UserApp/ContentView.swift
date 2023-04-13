@@ -42,12 +42,14 @@ struct RowView: View {
     let user : User
     
     var body: some View {
-        VStack(alignment: .leading){
-            Image(user.image)
-                .resizable()
-                .frame(width: 50, height: 50)
-                .cornerRadius(100)
-                .aspectRatio(contentMode: .fill)
+            HStack{
+                Image(user.image)
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .cornerRadius(100)
+                    .aspectRatio(contentMode: .fill)
+            }
+            VStack(alignment: .leading){
             Text(user.name)
                 .font(.headline.bold())
             Text(user.email)

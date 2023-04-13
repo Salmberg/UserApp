@@ -15,3 +15,5 @@ struct User : Identifiable, Equatable {
     var image : String
     
 }
+
+

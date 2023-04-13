@@ -15,10 +15,10 @@ class UsersViewModel : ObservableObject {
     }
     
     func addMockData() {
-        listOfUsers.append(User(name: "Kalle", email: "Kalle@email.com", image: ""))
-        listOfUsers.append(User(name: "David", email: "David@Salmberg", image: ""))
-        listOfUsers.append(User(name: "Johan", email: "Johan@mailen.se", image: ""))
-        listOfUsers.append(User(name: "Anna", email: "Anna@email.com", image: ""))
+        listOfUsers.append(User(name: "Kalle", email: "Kalle@email.com", image: "Hund"))
+        listOfUsers.append(User(name: "David", email: "David@Salmberg", image: "Kaffe"))
+        listOfUsers.append(User(name: "Johan", email: "@mailen.se", image: "Bär"))
+        listOfUsers.append(User(name: "Anna", email: "Anna@email.com", image: "Gotland"))
     }
     
     func update(user: User, with name: String) {
