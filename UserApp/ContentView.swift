@@ -7,18 +7,29 @@
 
 import SwiftUI
 
-var users = [User(name: "David", email: "@@@", image: "image"),
-             User(name: "Johan", email: "@@@", image: "image"),
-             User(name: "Anna", email: "@@@", image: "image")]
+
 
 struct ContentView: View {
+    
+    var users = [User(name: "David", email: "@@@", image: "image"),
+                 User(name: "Johan", email: "@@@", image: "image"),
+                 User(name: "Anna", email: "@@@", image: "image")]
+    
     var body: some View {
-        VStack {
-            List() {
-                ForEach(users) { user in
-                    RowView(user: user)
+        NavigationView {
+            VStack {
+                List() {
+                    ForEach(users) { user in
+                        NavigationLink(destination: UserView()){
+                            RowView(user: user)
+                        }
+                    }
                 }
             }
+            .navigationTitle("Users")
+            .navigationBarItems(trailing: NavigationLink(destination: UserView()){
+                Image(systemName: "plus.circle")
+            })
         }
     }
 }
